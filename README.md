@@ -5,7 +5,7 @@
 ![3](https://user-images.githubusercontent.com/97220909/220256698-9573ff6f-f7b5-43a4-b09f-edcbf999d2dd.png)
 
 ### Synopsis 
-I built the AI image generation project just as a cool thing to share with my family and it happened to double as learning. I conceptualized the MERN architecture throughout October, stumbled through prototypes in November, and was really connecting things come December. I deployed it in January on Netlify, but it did not last long, as I forgot that OPENAI image generation is not free, and all the tokens I bought were gone within the day, but it was fun seeing them interact with it.
+I embarked on the creation of an innovative AI image generation project with the intention of sharing it with my family and inadvertently gained a valuable learning experience. My conceptualization of the MERN architecture spanned the entirety of October, with a prototyping process in November. However, as December approached, I began to seamlessly integrate the various components of the project. After deploying it on Netlify in January, I was disheartened to discover that the OPENAI image generation service was not cost-free and my purchased tokens were quickly depleted. Nonetheless, I found it fascinating to observe my family interact with the project and have retained samples and screenshots of the beginning stages.
 
 ### Compile
 
