@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'; // Allows functional components to use state variables
 import { useNavigate } from 'react-router-dom'; // Allows components to navigate to different pages within a web application.
 
