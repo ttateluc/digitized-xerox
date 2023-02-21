@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; // Allows functional components to use state variables
+import { Card, FormField, Loader } from '../components'; // Imports Card component, formfield component, and Loader animation component
 
-import { Card, FormField, Loader } from '../components';
+import swal from 'sweetalert'; // Imports custom popup message library for default alert() replacement
 
-
-// A functional component to render a list of cards or a title if there are posts to show
-const RenderCards = ({ data, title }) => {
-  if (data?.length > 0) {
+/*A functional component to render a list of cards or a title if there are posts to show*/
+const RenderCards = ({ data, title }) => { // Data-Title props
+  if (data?.length > 0) { // Safely accessses length to see if data exists
     return (
-      data.map((post) => <Card key={post._id} {...post} />)
+      data.map((post) => <Card key={post._id} {...post} />) // Returns mapped array of card components
     );
   }
 
-  return (
-    <h2 className="mt-5 font-bold text-[#6469ff] text-xl uppercase">{title}</h2>
+  return ( // No data
+    <h2 className="mt-5 font-bold text-[#6469ff] text-xl uppercase">{title}</h2> // Returns title prop for "no posts" indicator
   );
 };
 
@@ -26,9 +26,10 @@ const Home = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState(null);
 
-  // An async function to fetch posts from a local API and update state with the response
+  /* An async function to fetch posts from a local API and update state with the response */
   const fetchPosts = async () => {
-    setLoading(true);
+
+    setLoading(true); // Displays loading animation as default on site refresh
 
     try {
       const response = await fetch('http://localhost:8080/api/v1/post', {
@@ -39,29 +40,29 @@ const Home = () => {
       });
 
       if (response.ok) {
-        const result = await response.json();
-        setAllPosts(result.data.reverse());
+        const result = await response.json(); // Converts the response body to JSON format and sets the allPosts state to the array of data objects returned from the API.
+        setAllPosts(result.data.reverse()); // Reverses the order of the posts, so that the newest post appears first
       }
     } catch (err) {
-      alert(err);
+      swal(err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Use the useEffect hook to fetch posts when the component mounts
+  /* Fetches posts when the component mounts (every render, default state) */
   useEffect(() => {
     fetchPosts();
   }, []);
 
   // A function to handle changes to the search input and filter posts accordingly
   const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
+    clearTimeout(searchTimeout); // Ensures the function is not called too frequently, which slows down the app
+    setSearchText(e.target.value); // Updates searchText state to input value
 
-    setSearchTimeout(
-      setTimeout(() => {
-        const searchResult = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
+    setSearchTimeout( // Sets new timeout
+      setTimeout(() => { // Runs code within after 100 ms
+        const searchResult = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase())); // Filters the allPosts array to find any items where the name or prompt includes the search text w/ case insensitivity
         setSearchedResults(searchResult);
       }, 100),
     );
