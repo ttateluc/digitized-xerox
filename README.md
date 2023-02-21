@@ -10,3 +10,7 @@ I built the AI image generation project just as a cool thing to share with my fa
 ### Compile
 
 Download code zip, import into editor, install all dependecies listed (i.e vite) via node.js package manager (npm), provide .env file.
+
+### WIP
+
+Simultanepus 4-image generation
