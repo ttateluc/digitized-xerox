@@ -13,4 +13,4 @@ Download code zip, import into editor, install all dependecies listed (i.e vite)
 
 ### WIP
 
-Simultanepus 4-image generation
+Simultaneous 4-image generation
